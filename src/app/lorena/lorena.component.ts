@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-lorena',
+  selector: 'lorena',
   templateUrl: './lorena.component.html',
   styleUrls: ['./lorena.component.scss']
 })
