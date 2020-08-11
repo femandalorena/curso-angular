@@ -12,7 +12,7 @@ export class AppComponent {
   sw = true;
 
   persons = ['mar', 'maria', 'marco', 'marina']
-
+  aux = 6
   ngOnInit () {
     const array = from ([1,2,3,4,5,6]);
     array.subscribe (a => console.log('item: ', a) )
