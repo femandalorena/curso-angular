@@ -9,9 +9,35 @@ import {from, fromEvent} from 'rxjs';
 
 export class AppComponent {
   title = 'curso-angular';
+    people = [
+    {
+      name: 'martina',
+      lastName: 'fernandez',
+      age: 22,
+      enable: true
+    },
+    {
+      name: 'marco',
+      lastName: 'martinez',
+      age: 22,
+      enable: true
+    },
+    {
+      name: 'maria',
+      lastName: 'marcos',
+      age: 22,
+      enable: false
+    },
+    {
+      name: 'marta',
+      lastName: 'martins',
+      age: 22,
+      enable: false
+    }
+  ]
   sw = true;
 
-  persons = ['mar', 'maria', 'marco', 'marina']
+  personas = ['mar', 'maria', 'marco', 'marina']
   aux = 6
   auxColor = 'blue';
   auxClass = true;
