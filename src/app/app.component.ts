@@ -9,6 +9,9 @@ import {from, fromEvent} from 'rxjs';
 
 export class AppComponent {
   title = 'curso-angular';
+  sw = true;
+
+  persons = ['mar', 'maria', 'marco', 'marina']
 
   ngOnInit () {
     const array = from ([1,2,3,4,5,6]);
