@@ -14,4 +14,12 @@
 <p *ngSwitchDefault> el valor no es un numero del 1 al 5</p>
 
 </div>
+
+<button (click)="auxColor = 'red'"> vermelho </button>
+<button (click)="auxColor = 'blue'"> azur </button>
+<button (click)="auxColor = 'purple'"> roxa </button>
+<div [ngStyle]="{'border': '3px solid ' + auxColor , 'color': auxColor }">
+  people </div>
+
+
 <lorena> </lorena>

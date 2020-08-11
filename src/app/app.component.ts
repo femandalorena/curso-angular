@@ -13,6 +13,7 @@ export class AppComponent {
 
   persons = ['mar', 'maria', 'marco', 'marina']
   aux = 6
+  auxColor = 'blue';
   ngOnInit () {
     const array = from ([1,2,3,4,5,6]);
     array.subscribe (a => console.log('item: ', a) )
