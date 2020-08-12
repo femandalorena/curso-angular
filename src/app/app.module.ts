@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { LorenaComponent } from './lorena/lorena.component';
-import { PersonModule } from './person.module';
+import { LorenaComponent } from './componets/lorena/lorena.component';
+import { PersonModule } from './modules/person/person.module';
+import { ProductModule } from './modules/product/product.module';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { PersonModule } from './person.module';
   imports: [
     BrowserModule,
     FormsModule,
-    PersonModule
+    PersonModule,
+     ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
