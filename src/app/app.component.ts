@@ -9,32 +9,24 @@ import {from, fromEvent} from 'rxjs';
 
 export class AppComponent {
   title = 'curso-angular';
-    people = [
-    {
+    persons = [{
       name: 'martina',
       lastName: 'fernandez',
-      age: 22,
-      enable: true
-    },
-    {
+      age: 11,
+      enable: false},{
       name: 'marco',
       lastName: 'martinez',
-      age: 22,
-      enable: true
-    },
-    {
+      age: 12,
+      enable: false},{
       name: 'maria',
       lastName: 'marcos',
-      age: 22,
-      enable: false
-    },
-    {
+      age: 13,
+      enable: true},{
       name: 'marta',
       lastName: 'martins',
-      age: 22,
-      enable: false
-    }
-  ]
+      age: 14,
+      enable: true
+    }]
   sw = true;
 
   personas = ['mar', 'maria', 'marco', 'marina']
