@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PersonComponent } from './person/person.component';
+import { PersonComponent } from './person.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
