@@ -21,4 +21,4 @@ import { Ad3Component } from './components/ad3/ad3.component';
   ]
 
 })
-export class AppModule { }
+export class AdminModule { }
