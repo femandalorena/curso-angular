@@ -62,3 +62,7 @@
 
 
 <p>{{ 6 | exponent: 2  }}</p>
+VALUE: <input type="text" [(ngModel)]="auxNumber">
+<p> </p>
+EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
+<p>{{ auxNumber | exponent: auxExponent : 'answer might be'  }}</p>
