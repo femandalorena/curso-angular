@@ -10,6 +10,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
 import { TestPipe } from './pipes/test.pipe';
 import { ExpoPipe } from './pipes/exponent.pipe';
+import { PurePipe } from './pipes/pure.pipe';
+import { ImpurePipe } from './pipes/impure.pipe';
 
 
 
@@ -18,7 +20,9 @@ import { ExpoPipe } from './pipes/exponent.pipe';
     AppComponent,
     LorenaComponent, 
     TestPipe,
-    ExpoPipe
+    ExpoPipe, 
+    PurePipe,
+    ImpurePipe
   ],
   imports: [
     BrowserModule,

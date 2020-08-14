@@ -9,6 +9,7 @@ import {from, fromEvent} from 'rxjs';
 
 export class AppComponent {
   title = 'curso-angular';
+  numbers = [1,2,3,4,5,6,7,8,9,10]
     persons = [{
       name: 'martina',
       lastName: 'fernandez',
@@ -38,5 +39,11 @@ export class AppComponent {
     array.subscribe (a => console.log('item: ', a) )
     const aux = fromEvent (document, 'mousemove');
     aux.subscribe((a:any) => console.log('event: ' + a.clientX + ', ' + a.clientY));
+  }
+  pure (a:number, b:number){
+    return a+b;
+  }
+  impure (a:number, b:number){
+    return a+b+Math.random();
   }
 }

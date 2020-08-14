@@ -66,3 +66,7 @@ VALUE: <input type="text" [(ngModel)]="auxNumber">
 <p> </p>
 EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
 <p>{{ auxNumber | exponent: auxExponent : 'answer might be'  }}</p>
+
+<p>PURE:{{numbers | pure}}</p>
+<p>IMPURE:{{numbers | impure}}</p>
+<button (click)="numbers.push (4)"> add </button>
