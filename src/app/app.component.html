@@ -1,7 +1,9 @@
 <p> etiqueta p </p>
 <button (click)="sw = false;">sw button</button>
 
-
+<lorena (clickSave)="clickSaveChild($event)" name="Fer" age="20" description="she likes minecraft"> </lorena>
+<lorena (clickSave)="clickSaveChild($event)" name="Lorena" age="20" description="she likes GTA"> </lorena>
+<lorena (clickSave)="clickSaveChild($event)" name="Martina" age="20" description="she likes Sims"> </lorena>
 <div *ngFor="let person of persons; let i = index">
   <p>{{people}}========{{i}}</p>
 </div>

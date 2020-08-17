@@ -7,7 +7,7 @@ import {from, fromEvent} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'curso-angular';
   numbers = [1,2,3,4,5,6,7,8,9,10]
     persons = [{
@@ -45,5 +45,8 @@ export class AppComponent {
   }
   impure (a:number, b:number){
     return a+b+Math.random();
+  }
+  clickSaveChild(){
+    console.log('Event Child',event)
   }
 }
