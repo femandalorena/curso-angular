@@ -1,20 +1,22 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'lorena',
   templateUrl: './lorena.component.html',
   styleUrls: ['./lorena.component.scss']
 })
-export class LorenaComponent implements OnInit {
+export class LorenaComponent implements OnChanges, OnInit {
   nameCOMP: string
   @Input () name: string;
   @Input () description: string;
   @Input () age: number;
-
+user: string = "maria";
   @Output() clickSave= new EventEmitter();
   
   constructor() { }
-
+  ngOnChanges(){
+    console.log('on Changes')
+  }
   ngOnInit(): void {
   }
   onClickSave(){
@@ -22,6 +24,6 @@ export class LorenaComponent implements OnInit {
       name: this.name,
       age: this.age,
       description: this.description
-    }) //emite un json hacia afuera
+    }); //emite un json hacia afuera
   }
 }
