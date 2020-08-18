@@ -10,6 +10,7 @@ export class LorenaComponent implements OnChanges, OnInit {
   @Input () name: string;
   @Input () description: string;
   @Input () age: number;
+  
 user: string = "maria";
   @Output() clickSave= new EventEmitter();
   

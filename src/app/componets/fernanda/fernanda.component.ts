@@ -8,7 +8,8 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+SimpleChange
 } from "@angular/core";
 
 @Component({
@@ -37,16 +38,27 @@ export class fernandaComponent
     AfterViewInit,
     AfterViewChecked,
     OnDestroy {
-  @Input() name: string;
-
+  @Input() name2: string;
+  intermediaria : string;
+ @Input () lastname: string;
+  @Input ()
+    get name(){
+      return this.intermediaria;
+    }
+    set name (name: string) {
+      this.intermediaria= 'pref'+ name;
+    }
   constructor() {}
-
   ngOnInit() {
     console.log("ON INIT");
   }
 
-  ngOnChanges() {
-    console.log("ON CHANGES");
+  ngOnChanges(changes : SimpleChange) {
+    if(changes && changes.lastname &&changes.lastname.currentValue){
+      console.log("on changes" , changes.lastname.currentValue);
+      const aux= 'segpref' +changes.lastname.currentValue;
+      this.lastname=aux;
+    }
   }
 
   ngDoCheck() {

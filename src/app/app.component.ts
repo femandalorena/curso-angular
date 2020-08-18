@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import {from, fromEvent} from 'rxjs';
   
 @Component({
@@ -10,6 +10,7 @@ import {from, fromEvent} from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'curso-angular';
   name= "alguien";
+  lastname= "pues";
   numbers = [1,2,3,4,5,6,7,8,9,10]
     persons = [{
       name: 'martina',
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit{
   aux = 6
   auxColor = 'blue';
   auxClass = true;
+  
   ngOnInit () {
     const array = from ([1,2,3,4,5,6]);
     array.subscribe (a => console.log('item: ', a) )
