@@ -13,6 +13,7 @@ import { ExpoPipe } from './pipes/exponent.pipe';
 import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
+import { AnimalsComponent } from './animals.component';
 
 
 
@@ -24,7 +25,8 @@ import { NgColorDirective } from './directives/ng-color.directive';
     ExpoPipe, 
     PurePipe,
     ImpurePipe,
-    NgColorDirective
+    NgColorDirective,
+    AnimalsComponent
   ],
   imports: [
     BrowserModule,

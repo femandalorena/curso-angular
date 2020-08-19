@@ -76,3 +76,43 @@ EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
 <div [appNgColor]="'green'" [secondColor]="'blue'" > fernanda </div> 
 
 <div style="border: 1 px solid green ;" (appNgFocus)= "name ='aaaa'"> {{name}}</div>
+
+<br>
+
+  <p>------------------PRIMER PARCIAL------------------</p>
+
+  <p>--------------------VETERINARIA--------------------</p>
+
+<p>vacunados: {{vacunados.length}} , sin vacunar: {{novacunados.length}} </p>
+
+ <div [ngStyle]="{'background' : 'skyblue' }">  VACUNADOS </div>
+
+<div *ngFor="let pet of animals" >
+  <div *ngIf="pet.vacunado">
+  <div [ngStyle]="{'background': pet.edad <3 ? 'orange' : 'red'}">
+    <animal [nombre]="pet.nombre"
+           [color]="pet.color" 
+           [edad]="pet.edad" >
+   </animal>
+  </div> 
+  </div>
+</div>
+ <div [ngStyle]="{'background' : 'skyblue' }">  NO VACUNADOS </div>
+
+<div *ngFor="let pet of animals" >
+  <div *ngIf="! pet.vacunado">
+  <div [ngStyle]="{'background': pet.edad <3 ? 'orange' : 'red'}">
+    <animal [nombre]="pet.nombre"
+           [color]="pet.color" 
+           [edad]="pet.edad" >
+   </animal>
+   <button (clickSave)="onClickSave($event)">  VACUNAR</button>
+  </div> 
+  </div>
+</div>
+
+
+  
+
+
+
