@@ -41,6 +41,7 @@ export class AppComponent implements OnInit{
 {nombre: "dormilon", color: "cafe", edad: 4 , vacunado: false},
 {nombre: "vandido", color: "café", edad: 5 , vacunado: false}
 ]
+
 vacunados= this.animals.filter(s => s.vacunado===true)
 novacunados=this.animals.filter(s => s.vacunado ===false)
 
@@ -68,16 +69,15 @@ novacunados=this.animals.filter(s => s.vacunado ===false)
     return a+b+Math.random();
   }
   onClickSave(event){
-    
   }
-
+  vacunar (animal){
+    
+    ind= this.novacunados.findIndex(a => a === animal);
+    this.novacunados.splice(ind, 1);
+    this.vacunados.push(animal);
+  }
   changeName(){
     this.name='nadie';
-  }
-  sumar(animals){
-    let aux =0
-    for (let i =0; animals.length++; i++){
-      aux = aux +animals[i];
-    }
+  
   }
 }

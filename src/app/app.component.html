@@ -84,6 +84,9 @@ EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
   <p>--------------------VETERINARIA--------------------</p>
 
 <p>vacunados: {{vacunados.length}} , sin vacunar: {{novacunados.length}} </p>
+<div *ngIf="vacunados.length==(animals.length)"> 
+   <div [ngStyle]="{'background' : 'green' }">  TODOS VACUNADOS </div>
+</div>
 
  <div [ngStyle]="{'background' : 'skyblue' }">  VACUNADOS </div>
 
@@ -106,7 +109,7 @@ EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
            [color]="pet.color" 
            [edad]="pet.edad" >
    </animal>
-   <button (clickSave)="onClickSave($event)">  VACUNAR</button>
+     <button (clickSave)="vacunar('pet')">  VACUNAR</button>
   </div> 
   </div>
 </div>
