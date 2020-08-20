@@ -14,8 +14,7 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 import { AnimalsComponent } from './animals.component';
-
-
+import { AppRouting } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,8 @@ import { AnimalsComponent } from './animals.component';
     PersonModule,
      ProductModule,
      AdminModule,
-     UserModule
+     UserModule, 
+     AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
