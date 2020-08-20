@@ -14,7 +14,7 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 import { AnimalsComponent } from './animals.component';
-import { AppRouting } from './app.routing';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { AppRouting } from './app.routing';
      ProductModule,
      AdminModule,
      UserModule, 
-     AppRouting
+     AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
