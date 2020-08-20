@@ -14,6 +14,9 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 import { AnimalsComponent } from './animals.component';
+import { HomeComponent } from './componets/home/home.component';
+import { AboutComponent } from './componets/about/about.component';
+import { AdminComponent } from './componets/admin/admin.component';
 import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
@@ -25,7 +28,10 @@ import { AppRoutingModule } from './app.routing.module';
     PurePipe,
     ImpurePipe,
     NgColorDirective,
-    AnimalsComponent
+    AnimalsComponent,
+     HomeComponent,
+    AboutComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
