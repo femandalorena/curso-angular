@@ -20,7 +20,6 @@ import { AdminComponent } from './componets/admin/admin.component';
 import { AppRoutingModule } from './app.routing.module';
 import { Home1Component } from './componets/home1/home1.component';
 import { Home2Component } from './componets/home2/home2.component';
-import { User2Component } from './user2/user2.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { User2Component } from './user2/user2.component';
     AboutComponent,
     AdminComponent,
     Home1Component,
-    Home2Component,
-    User2Component
+    Home2Component
   ],
   imports: [
     BrowserModule,

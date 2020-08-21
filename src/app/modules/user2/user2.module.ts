@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UserRoutingModule } from './user2-routing.module';
-import { UserComponent } from './user2/user2.component';
+import { User2RoutingModule } from './user2-routing.module';
+import { User2Component } from './user2/user2.component';
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import { UserComponent } from './user2/user2.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    User2RoutingModule
   ]
 })
 
