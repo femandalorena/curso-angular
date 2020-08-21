@@ -18,6 +18,8 @@ import { HomeComponent } from './componets/home/home.component';
 import { AboutComponent } from './componets/about/about.component';
 import { AdminComponent } from './componets/admin/admin.component';
 import { AppRoutingModule } from './app.routing.module';
+import { Home1Component } from './componets/home1/home1.component';
+import { Home2Component } from './componets/home2/home2.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AppRoutingModule } from './app.routing.module';
     AnimalsComponent,
      HomeComponent,
     AboutComponent,
-    AdminComponent
+    AdminComponent,
+    Home1Component,
+    Home2Component
   ],
   imports: [
     BrowserModule,
