@@ -8,8 +8,7 @@ import { OwnerModule } from './modules/owner/owner.module';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent ],
   imports: [
     BrowserModule,
     FormsModule,
