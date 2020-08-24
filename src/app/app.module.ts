@@ -35,8 +35,7 @@ import { Home2Component } from './componets/home2/home2.component';
     AboutComponent,
     AdminComponent,
     Home1Component,
-    Home2Component
-  ],
+    Home2Component ],
   imports: [
     BrowserModule,
     FormsModule,
