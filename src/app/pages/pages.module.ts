@@ -1,23 +1,17 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {PagesComponent} from './pages/pages.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: PagesComponent,
-    children: [
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
-      {path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
-      {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
-      {path: 'list', loadChildren: () => import('./list/list.module').then(m => m.ListModule)}
-    ]
-  }
-];
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages/pages.component';
+
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  declarations: [
+    PagesComponent
+  ],
+  imports: [
+    CommonModule,
+    PagesRoutingModule
+  ]
 })
-export class PagesRoutingModule {
-}
+export class PagesModule { }
