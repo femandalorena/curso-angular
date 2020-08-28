@@ -1,5 +1,4 @@
-
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 
 @Component({
@@ -17,7 +16,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe(res => {
+
+      // [1,2,3,4,5,6];
+      // {{key:1 },{key: 2},{key: 1},{key: 1},{key: 1},{key: 1},{key: 1}}
+      // Object.entries(res) [ [key, 1], [key, 2] , .......              ];
+
+      console.log('RESPUESTA: ', res);
+      console.log('RESPUESTA: ', Object.entries(res));
+
+      Object.entries(res).map(p => this.products.push(p[1]));
+
+    });
 
   }
 
