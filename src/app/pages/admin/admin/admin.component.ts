@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.productSubs.unsubscribe();
+      this.productSubs ? this.productSubs.unsubscribe(): '' ;
   }
 
 }
