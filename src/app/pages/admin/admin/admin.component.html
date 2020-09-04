@@ -5,37 +5,45 @@
     <form [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;">
 
       <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" type="text">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" type="text">
       </mat-form-field>
 
-      <div *ngIf="productForm.get('description').invalid &&
-              (productForm.get('description').touched ||
-              productForm.get('description').dirty)"
+      <div *ngIf="productForm.get('nombre').invalid &&
+              (productForm.get('nombre').touched ||
+              productForm.get('nombre').dirty)"
            class="alert alert-danger">
-        <div *ngIf="productForm.get('description').errors.required">
-          Name is required
+        <div *ngIf="productForm.get('nombre').errors.required">
+          El nombre es obligatorio
         </div>
-        <div *ngIf="productForm.get('description').errors.minlength">
-          Name must have 3 characteres min
+        <div *ngIf="productForm.get('nombre').errors.minlength">
+          El nombre debe tener al menos 3 letras
         </div>
       </div>
 
       <mat-form-field>
-        <mat-label>Image Url</mat-label>
-        <input matInput formControlName="imageUrl" type="text">
+        <mat-label>Tamaño</mat-label>
+        <input matInput formControlName="tamanio" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Owner Id</mat-label>
-        <input matInput formControlName="ownerId" type="text">
+        <mat-label>Stock</mat-label>
+        <input matInput formControlName="cantidad" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input matInput formControlName="price" type="text">
+        <mat-label>Tipo </mat-label>
+        <input matInput formControlName="tipo" type="text">
       </mat-form-field>
+      <div *ngIf="productForm.get('tipo').invalid &&
+              (productForm.get('tipo').touched ||
+              productForm.get('tipo').dirty)"
+           class="alert alert-danger">
+        <div *ngIf="productForm.get('tipo').errors.required">
+          El tipo de de ropa es obligatorio
+        </div>
+        </div>
       <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput formControlName="title" type="text">
+        <mat-label>Url de la Imagen</mat-label>
+        <input matInput formControlName="imagen" type="text">
       </mat-form-field>
 
     </form>
@@ -44,35 +52,57 @@
 
   </mat-drawer>
 
+
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
+      CREAR
     </button>
   </div>
 
+
   <div class="row">
+  <a class="navbar-brand" href="#">CALOR</a>
 
     <div *ngFor="let product of products"
          class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-         style="padding: 50px; display: flex; justify-content: center;">
-
-      <mat-card class="example-card">
+         [ngStyle]="{'background': product.stock >1 ? 'orange' : 'red'}"> 
+      <mat-card class="example-card" *ngIf="product.type === 'calor'">
         <mat-card-header>
-          <mat-card-title>{{product.title}}</mat-card-title>
-          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+          <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
+          <mat-card-subtitle>Talla: {{product.size}}</mat-card-subtitle>
+           <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="product.urlIgame" alt="Suit photo">
         <mat-card-content>
-          <p>
-            {{product.description}}
-          </p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click)="onEdit(product); drawer.toggle()">Edit</button>
           <button mat-button (click)="onDelete(product.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
+    </div>
+  </div>
 
+    <div class="row">
+  <a class="navbar-brand" href="#">FRIO</a>
+
+   <div *ngFor="let product of products"
+         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+         [ngStyle]="{'background': product.stock >1 ? 'orange' : 'red'}"> 
+            <mat-card class="example-card" *ngIf="product.type === 'frio'">
+        <mat-card-header>
+          <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
+          <mat-card-subtitle>Talla: {{product.size}}</mat-card-subtitle>
+           <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.urlIgame" alt="Suit photo">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="onEdit(product); drawer.toggle()">Edit</button>
+          <button mat-button (click)="onDelete(product.id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 

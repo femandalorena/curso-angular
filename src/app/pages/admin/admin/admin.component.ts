@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, VERSION, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../../services/product.service';
 import {Subscription} from 'rxjs';
@@ -11,7 +11,6 @@ import {Subscription} from 'rxjs';
 export class AdminComponent implements OnInit, OnDestroy {
 
   products = [];
-
   productForm: FormGroup;
 
   productSubs: Subscription;
@@ -31,11 +30,11 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.loadProduct();
 
     this.productForm = this.formBuilder.group({
-      description: ['description', [Validators.required, Validators.minLength(3)]],
-      imageUrl: '',
-      ownerId: '',
-      price: '',
-      title: ''
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      tipo: ['', Validators.required],
+      cantidad: '',
+      tamanio: '',
+      imagen: ''
     });
 
   }
@@ -76,9 +75,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
-  /*onEnviar() {
-    console.log('VALOR: ', this.nameConatrol.value);
-  }*/
 
   onEnviar2(): void {
     this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
@@ -98,5 +94,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
     this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
   }
+
+
 
 }
