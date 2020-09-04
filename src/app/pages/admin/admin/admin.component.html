@@ -61,7 +61,7 @@
 
 
   <div class="row">
-  <a class="navbar-brand" href="#">CALOR</a>
+  <a class="navbar-brand" href="#">------------------CALOR-------------------</a>
 
     <div *ngFor="let product of products"
          class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"> 
@@ -69,7 +69,7 @@
          [ngStyle]="{'background': product.stock >0 ? 'orange' : 'red'}" *ngIf="product.type === 'calor'">
         <mat-card-header>
           <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
-          <mat-card-subtitle>Talla: {{product.size}}</mat-card-subtitle>
+          <mat-card-subtitle>Talla: {{product.size | resize}}</mat-card-subtitle>
            <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="product.urlImage" alt="Suit photo">
@@ -84,7 +84,7 @@
   </div>
 
   <div class="row">
-  <a class="navbar-brand" href="#">FRIO</a>
+  <a class="navbar-brand" href="#">----------------FRIO----------------</a>
 
     <div *ngFor="let product of products"
          class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"> 
@@ -93,10 +93,7 @@
          *ngIf="product.type === 'frio'">
         <mat-card-header>
           <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
-          <mat-card-subtitle>Talla: 
-           <p *ngIf="product.size<100 && product.size >0 ">  </p>
-            
-            {{product.size}}</mat-card-subtitle>
+          <mat-card-subtitle>Talla: {{product.size | resize}}</mat-card-subtitle>
            <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="product.urlImage" alt="Suit photo">
