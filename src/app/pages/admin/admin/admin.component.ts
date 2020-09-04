@@ -30,11 +30,11 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.loadProduct();
 
     this.productForm = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      tipo: ['', Validators.required],
-      cantidad: '',
-      tamanio: '',
-      imagen: ''
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      type: ['', Validators.required],
+      stock: '',
+      size: '',
+      urlImage: ''
     });
 
   }
@@ -49,13 +49,21 @@ export class AdminComponent implements OnInit, OnDestroy {
   onDelete(id: any): void {
     this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
       res => {
-        console.log('RESPONSE: ', res);
         this.loadProduct();
       },
       err => {
         console.log('ERROR: ');
       }
     );
+  }
+
+
+  getTalla(talla: number) {
+    if (talla > 0 && talla < 21) return "XS";
+    if (talla > 20 && talla < 31) return "S";
+    if (talla > 30 && talla < 51) return "M";
+    if (talla > 50 && talla < 71) return "L";
+    if (talla > 70 && talla < 101) return "XL";
   }
 
   onEdit(product): void {
@@ -80,6 +88,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
       res => {
         console.log('RESP: ', res);
+        this.loadProduct();
       },
       err => {
         console.log('ERROR DE SERVIDOR');

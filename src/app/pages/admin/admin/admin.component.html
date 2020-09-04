@@ -5,45 +5,45 @@
     <form [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;">
 
       <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" type="text">
+        Nombre
+        <input matInput formControlName="name" type="text">
       </mat-form-field>
 
-      <div *ngIf="productForm.get('nombre').invalid &&
-              (productForm.get('nombre').touched ||
-              productForm.get('nombre').dirty)"
+      <div *ngIf="productForm.get('name').invalid &&
+              (productForm.get('name').touched ||
+              productForm.get('name').dirty)"
            class="alert alert-danger">
-        <div *ngIf="productForm.get('nombre').errors.required">
+        <div *ngIf="productForm.get('name').errors.required">
           El nombre es obligatorio
         </div>
-        <div *ngIf="productForm.get('nombre').errors.minlength">
+        <div *ngIf="productForm.get('name').errors.minlength">
           El nombre debe tener al menos 3 letras
         </div>
       </div>
 
       <mat-form-field>
-        <mat-label>Tamaño</mat-label>
-        <input matInput formControlName="tamanio" type="text">
+        Tamaño
+        <input matInput formControlName="size" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Stock</mat-label>
-        <input matInput formControlName="cantidad" type="text">
+        Stock
+        <input matInput formControlName="stock" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Tipo </mat-label>
-        <input matInput formControlName="tipo" type="text">
+        Tipo
+        <input matInput formControlName="type" type="text">
       </mat-form-field>
-      <div *ngIf="productForm.get('tipo').invalid &&
-              (productForm.get('tipo').touched ||
-              productForm.get('tipo').dirty)"
+      <div *ngIf="productForm.get('type').invalid &&
+              (productForm.get('type').touched ||
+              productForm.get('type').dirty)"
            class="alert alert-danger">
-        <div *ngIf="productForm.get('tipo').errors.required">
+        <div *ngIf="productForm.get('type').errors.required">
           El tipo de de ropa es obligatorio
         </div>
         </div>
       <mat-form-field>
-        <mat-label>Url de la Imagen</mat-label>
-        <input matInput formControlName="imagen" type="text">
+        Url de la Imagen
+        <input matInput formControlName="urlImage" type="text">
       </mat-form-field>
 
     </form>
@@ -64,15 +64,15 @@
   <a class="navbar-brand" href="#">CALOR</a>
 
     <div *ngFor="let product of products"
-         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-         [ngStyle]="{'background': product.stock >1 ? 'orange' : 'red'}"> 
-      <mat-card class="example-card" *ngIf="product.type === 'calor'">
+         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"> 
+      <mat-card class="example-card" 
+         [ngStyle]="{'background': product.stock >0 ? 'orange' : 'red'}" *ngIf="product.type === 'calor'">
         <mat-card-header>
           <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
           <mat-card-subtitle>Talla: {{product.size}}</mat-card-subtitle>
            <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.urlIgame" alt="Suit photo">
+        <img mat-card-image [src]="product.urlImage" alt="Suit photo">
         <mat-card-content>
         </mat-card-content>
         <mat-card-actions>
@@ -83,19 +83,23 @@
     </div>
   </div>
 
-    <div class="row">
+  <div class="row">
   <a class="navbar-brand" href="#">FRIO</a>
 
-   <div *ngFor="let product of products"
-         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
-         [ngStyle]="{'background': product.stock >1 ? 'orange' : 'red'}"> 
-            <mat-card class="example-card" *ngIf="product.type === 'frio'">
+    <div *ngFor="let product of products"
+         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"> 
+      <mat-card class="example-card" 
+         [ngStyle]="{'background': product.stock >0 ? 'orange' : 'red'}"
+         *ngIf="product.type === 'frio'">
         <mat-card-header>
           <mat-card-title>Nombre: {{product.name  | uppercase}}</mat-card-title>
-          <mat-card-subtitle>Talla: {{product.size}}</mat-card-subtitle>
+          <mat-card-subtitle>Talla: 
+           <p *ngIf="product.size<100 && product.size >0 ">  </p>
+            
+            {{product.size}}</mat-card-subtitle>
            <mat-card-subtitle>Stock: {{product.stock}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.urlIgame" alt="Suit photo">
+        <img mat-card-image [src]="product.urlImage" alt="Suit photo">
         <mat-card-content>
         </mat-card-content>
         <mat-card-actions>
