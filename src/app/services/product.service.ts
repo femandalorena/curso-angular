@@ -10,11 +10,11 @@ export class ProductService {
   }
 
   public getProducts(): Observable<any> {
-    return this.http.get('https://bbdd-1a7ca.firebaseio.com/products');
+    return this.http.get('https://bbdd-1a7ca.firebaseio.com/products.json');
   }
 
   public addProduct(product: any): Observable<any> {
-    return this.http.post('https://bbdd-1a7ca.firebaseio.com/products', product);
+    return this.http.post('https://bbdd-1a7ca.firebaseio.com/products.json', product);
   }
 
   public deleteProduct(id: any): Observable<any> {
@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   public updateProduct(id: any, product: any): Observable<any> {
-    return this.http.put(`https://bbdd-1a7ca.firebaseio.com/products${id}.json`, product);
+    return this.http.put(`https://bbdd-1a7ca.firebaseio.com/products/${id}.json`, product);
   }
 
 }
