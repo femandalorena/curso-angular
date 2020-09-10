@@ -5,7 +5,7 @@ import {Subscription} from 'rxjs';
 
 @Component({
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
