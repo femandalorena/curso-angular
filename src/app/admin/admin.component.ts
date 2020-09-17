@@ -5,7 +5,7 @@ import {AuthService} from '../shared/services/auth.service';
   templateUrl: './admin.component.html'
 })
 
-export class PagesComponent implements OnInit {
+export class StudentsComponent implements OnInit {
 
   constructor(private authService: AuthService) {
   }
