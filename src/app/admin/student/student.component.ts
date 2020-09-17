@@ -31,8 +31,8 @@ export class StudentComponent implements OnInit, OnDestroy {
 
     this.studentForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      age: ['',[Validators.required]],
-      grade: '',
+      age: '',
+      grade: ['',[Validators.required]],
       urlImage: ''
     });
 

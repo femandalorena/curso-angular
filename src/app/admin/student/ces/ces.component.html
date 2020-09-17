@@ -43,7 +43,6 @@
 
   
     </form>
-    <button (click)="onEnviar2()">SAVE</button>
-    <button (click)="onUpdateProduct()">SAVE</button>
-
+<button *ngIf="!edit" mat-stroked-button style="margin-left: 100px" (click)="onEnviar()">SAVE</button>
+<button *ngIf="edit" mat-stroked-button  style="margin-left: 100px" (click)="onUpdateProduct()">SAVE</button>
   </mat-drawer>

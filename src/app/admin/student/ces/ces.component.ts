@@ -1,15 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {StudentService} from '../../shared/services/student.service';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
+  selector: 'ces',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
 export class CesComponent implements OnInit, OnDestroy {
-
+ @Input() edit: boolean;
   students = [];
 
   studentForm: FormGroup;
