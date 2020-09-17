@@ -1,22 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import {HomeComponent} from './home.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import {AdminRoutingModule} from './students-routing.module';
+import {AdminComponent} from './students.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+
 @NgModule({
   declarations: [
-    HomeComponent
+  StudentsComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    AdminRoutingModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatSidenavModule,
     MatButtonModule,
@@ -27,4 +30,5 @@ import {MatInputModule} from '@angular/material/input';
     ProductService
   ]
 })
-export class HomeModule { }
+export class AdminModule {
+}

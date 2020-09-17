@@ -5,8 +5,8 @@ import {Subscription} from 'rxjs';
 import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  templateUrl: './students.component.html',
+  styleUrls: ['./students.component.scss']
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
