@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {AdminRoutingModule} from './students-routing.module';
-import {AdminComponent} from './students.component';
+import {StudentsRoutingModule} from './students-routing.module';
+import {StudentsComponent} from './students.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -18,7 +18,7 @@ import {MatInputModule} from '@angular/material/input';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    StudentsRoutingModule,
     ReactiveFormsModule,
     MatCardModule,
     MatSidenavModule,
@@ -30,5 +30,5 @@ import {MatInputModule} from '@angular/material/input';
     ProductService
   ]
 })
-export class AdminModule {
+export class StudentsModule {
 }
