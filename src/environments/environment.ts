@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
   app: {
-    apiBaseUrl: 'https://bbdd-1a7ca.firebaseio.com'
+    apiBaseUrl: 'https://studentss-test.firebaseio.com'
   },
   auth: {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
-    key: 'AIzaSyDIShPZrqzvoM5pXcQjd8qNdmBWYczgVkQ'
+    key: 'AIzaSyB1nAJ10CZ3PaMRFRWwtEJ824KNrgpgovc'
   }
 };
 
