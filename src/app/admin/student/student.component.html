@@ -2,43 +2,58 @@
 
   <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
 
-    <form [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;">
+    <form [formGroup]="studentForm" style="display: flex; flex-direction: column; padding: 20px;">
 
       <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" type="text">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text">
       </mat-form-field>
 
-      <div *ngIf="productForm.get('description').invalid &&
-              (productForm.get('description').touched ||
-              productForm.get('description').dirty)"
+      <div *ngIf="studentForm.get('name').invalid &&
+              (studentForm.get('name').touched ||
+              studentForm.get('name').dirty)"
            class="alert alert-danger">
-        <div *ngIf="productForm.get('description').errors.required">
+        <div *ngIf="studentForm.get('name').errors.required">
           Name is required
         </div>
-        <div *ngIf="productForm.get('description').errors.minlength">
+        <div *ngIf="studentForm.get('name').errors.minlength">
           Name must have 3 characteres min
         </div>
       </div>
 
       <mat-form-field>
-        <mat-label>Image Url</mat-label>
-        <input matInput formControlName="imageUrl" type="text">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input matInput formControlName="price" type="text">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput formControlName="title" type="text">
+        <mat-label>Grade</mat-label>
+        <input matInput formControlName="grade" type="text">
       </mat-form-field>
 
+ <div *ngIf="studentForm.get('grade').invalid &&
+              (studentForm.get('grade').touched ||
+              studentForm.get('grade').dirty)"
+           class="alert alert-danger">
+        <div *ngIf="studentForm.get('grade').errors.required">
+          Grade is required
+        </div>
+      </div>
+        <mat-form-field>
+        <mat-label>Url Image</mat-label>
+        <input matInput formControlName="urlImage" type="text">
+      </mat-form-field>
+
+  
     </form>
-    <button (click)="onEnviar2()">Create</button>
-    <button (click)="onUpdateProduct()">Update</button>
+    <button (click)="onEnviar2()">SAVE</button>
+    <button (click)="onUpdateProduct()">SAVE</button>
 
   </mat-drawer>
+
+  <button >ADD</button>
+  
+  <button > REPORT </button>
+
 
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
@@ -48,21 +63,17 @@
 
   <div class="row">
 
-    <div *ngFor="let product of products"
+    <div *ngFor="let student of students"
          class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
          style="padding: 50px; display: flex; justify-content: center;">
 
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{product.title}}</mat-card-title>
-          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+          <mat-card-title>Name: {{student.name | uppercase }}</mat-card-title>
+          <mat-card-subtitle>Age: {{student.age}} </mat-card-subtitle>
+          <mat-card-subtitle>Grade: {{student.grade}} </mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            {{product.description}}
-          </p>
-        </mat-card-content>
+        <img mat-card-image [src]="student.urlImage" alt="student photo">
         <mat-card-actions>
           <button mat-button (click)="onEdit(product); drawer.toggle()">Edit</button>
           <button mat-button (click)="onDelete(product.id)">Delete</button>

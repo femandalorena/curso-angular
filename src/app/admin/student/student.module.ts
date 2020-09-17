@@ -30,5 +30,5 @@ import {MatInputModule} from '@angular/material/input';
     StudentService
   ]
 })
-export class AdminModule {
+export class StudentModule {
 }

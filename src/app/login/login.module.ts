@@ -28,5 +28,5 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class AdminModule {
+export class LoginModule {
 }

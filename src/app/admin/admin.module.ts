@@ -14,5 +14,5 @@ import {AdminComponent} from './admin.component';
   ]
 })
 
-export class PagesModule {
+export class AdminModule {
 }

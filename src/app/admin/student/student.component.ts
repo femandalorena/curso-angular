@@ -20,8 +20,6 @@ export class StudentComponent implements OnInit, OnDestroy {
   studentUpdateSubs: Subscription;
   idEdit: any;
 
-  // nameControl = new FormControl();
-
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private studentService: StudentService) {
@@ -29,19 +27,18 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.loadProduct();
+    this.loadStudents();
 
     this.studentForm = this.formBuilder.group({
-      description: ['description', [Validators.required, Validators.minLength(3)]],
-      imageUrl: '',
-      ownerId: '',
-      price: '',
-      title: ''
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      age: ['',[Validators.required]],
+      grade: '',
+      urlImage: ''
     });
 
   }
 
-  loadProduct(): void {
+  loadStudents(): void {
     this.students = [];
     const userId = this.authService.getUserId();
     this.studentGetSubs = this.studentService.getStudent().subscribe(res => {
@@ -53,7 +50,7 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.studentDeleteSubs = this.studentService.deleteStudent(id).subscribe(
       res => {
         console.log('RESPONSE: ', res);
-        this.loadProduct();
+        this.loadStudents();
       },
       err => {
         console.log('ERROR: ');
@@ -61,12 +58,12 @@ export class StudentComponent implements OnInit, OnDestroy {
     );
   }
 
-  onEdit(product): void {
-    this.idEdit = product.id;
-    this.studentForm.patchValue(product);
+  onEdit(student): void {
+    this.idEdit = student.id;
+    this.studentForm.patchValue(student);
   }
 
-  onUpdateProduct(): void {
+  onUpdateStudents(): void {
     this.studentUpdateSubs = this.studentService.updateStudent(
       this.idEdit,
       {
@@ -76,7 +73,7 @@ export class StudentComponent implements OnInit, OnDestroy {
     ).subscribe(
       res => {
         console.log('RESP UPDATE: ', res);
-        this.loadProduct();
+        this.loadStudents();
       },
       err => {
         console.log('ERROR UPDATE DE SERVIDOR');
