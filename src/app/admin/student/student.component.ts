@@ -9,7 +9,7 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './student.component.html'
 })
 export class StudentComponent implements OnInit {
-	
+	 
 	students = [];
 	primary = [];
 	secondary = [];
@@ -17,9 +17,9 @@ export class StudentComponent implements OnInit {
 	studentForm: FormGroup;
 
   studentGetSub: Subscription;
-  studentDelSub: Subscription;
-
-  editId : any;
+  studentDelSubs: Subscription;
+studentUpdateSubs: Subscription;
+  idEdit : any;
 
 	@Input() student: any;
 	@Output() formForSide = new EventEmitter();
@@ -50,21 +50,52 @@ export class StudentComponent implements OnInit {
     });
   }
 
-	onEdit(student) : void {
-    console.log("Student: ", student);
 
-    this.editId = student.id;
-    this.studentForm.patchValue({
-      name: student.name,
-      age: student.age,
-      grade: student.grade,
-      urlImage: student.urlImage
-    });
-    this.formForSide.emit(student);
+
+  onEdit(student): void {
+    this.idEdit = student.id;
+    this.studentForm.patchValue(student);
+  }
+
+  onUpdateProduct(): void {
+    this.studentUpdateSubs = this.studentService.updateStudent(
+      this.idEdit,
+      {
+        ...this.studentForm.value,
+        ownerId: this.authService.getUserId()
+      }
+    ).subscribe(
+      res => {
+        console.log('RESP UPDATE: ', res);
+        this.loadStudents();
+      },
+      err => {
+        console.log('ERROR UPDATE DE SERVIDOR');
+      }
+    );
+  }
+
+  /*onEnviar() {
+    console.log('VALOR: ', this.nameConatrol.value);
+  }*/
+
+  onEnviar2(): void {
+    this.studentDelSubs = this.studentService.addStudent({
+      ...this.studentForm.value,
+      ownerId: this.authService.getUserId()
+    }).subscribe(
+      res => {
+        console.log('RESP: ', res);
+      },
+      err => {
+        console.log('ERROR DE SERVIDOR');
+      }
+    );
+
   }
 
   onDelete(id: any) : void {
-    this.studentDelSub = this.studentService.deleteStudent(id).subscribe(res => {
+    this.studentDelSubs = this.studentService.deleteStudent(id).subscribe(res => {
       console.log("DELETE Response: ", res);
       this.loadStudents();
       window.location.reload();
