@@ -1,106 +1,77 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {StudentService} from '../../shared/services/student.service';
-import {Subscription} from 'rxjs';
-import {AuthService} from '../../shared/services/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StudentService } from '../../shared/services/student.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'student',
+  templateUrl: './student.component.html'
 })
-export class StudentComponent implements OnInit, OnDestroy {
+export class StudentComponent implements OnInit {
+	
+	students = [];
+	primary = [];
+	secondary = [];
 
-  students = [];
+	studentForm: FormGroup;
 
-  studentForm: FormGroup;
+  studentGetSub: Subscription;
+  studentDelSub: Subscription;
 
-  studentSubs: Subscription;
-  studentGetSubs: Subscription;
-  studentDeleteSubs: Subscription;
-  studentUpdateSubs: Subscription;
-  idEdit: any;
+  editId : any;
 
-  constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
-              private studentService: StudentService) {
-  }
+	@Input() student: any;
+	@Output() formForSide = new EventEmitter();
 
-  ngOnInit(): void {
+	constructor(private formBuilder: FormBuilder,
+              private studentService: StudentService,
+              private authService: AuthService) {
+		this.loadStudents();
+	}
 
-    this.loadStudents();
-
-    this.studentForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+	ngOnInit(): void {
+		this.studentForm = this.formBuilder.group({
+      name: '',
       age: '',
-      grade: ['',[Validators.required]],
+      grade: '',
       urlImage: ''
     });
+	}
 
-  }
-
-  loadStudents(): void {
+	loadStudents() : void {
     this.students = [];
-    const userId = this.authService.getUserId();
-    this.studentGetSubs = this.studentService.getStudent().subscribe(res => {
+    this.primary = [];
+    this.secondary = [];
+    const idUser = this.authService.getUserId();
+    this.studentGetSub = this.studentService.getStudent().subscribe(res => {
+
       Object.entries(res).map((p: any) => this.students.push({id: p[0], ...p[1]}));
     });
   }
 
-  onDelete(id: any): void {
-    this.studentDeleteSubs = this.studentService.deleteStudent(id).subscribe(
-      res => {
-        console.log('RESPONSE: ', res);
-        this.loadStudents();
-      },
-      err => {
-        console.log('ERROR: ');
-      }
-    );
+	onEdit(student) : void {
+    console.log("Student: ", student);
+
+    this.editId = student.id;
+    this.studentForm.patchValue({
+      name: student.name,
+      age: student.age,
+      grade: student.grade,
+      urlImage: student.urlImage
+    });
+    this.formForSide.emit(student);
   }
 
-  onEdit(student): void {
-    this.idEdit = student.id;
-    this.studentForm.patchValue(student);
-  }
-
-  onUpdateStudents(): void {
-    this.studentUpdateSubs = this.studentService.updateStudent(
-      this.idEdit,
-      {
-        ...this.studentForm.value,
-        ownerId: this.authService.getUserId()
-      }
-    ).subscribe(
-      res => {
-        console.log('RESP UPDATE: ', res);
-        this.loadStudents();
-      },
-      err => {
-        console.log('ERROR UPDATE DE SERVIDOR');
-      }
-    );
-  }
-
-  onEnviar2(): void {
-    this.studentSubs = this.studentService.addStudent({
-      ...this.studentForm.value,
-      ownerId: this.authService.getUserId()
-    }).subscribe(
-      res => {
-        console.log('RESP: ', res);
-      },
-      err => {
-        console.log('ERROR DE SERVIDOR');
-      }
-    );
-
-  }
-
-  ngOnDestroy(): void {
-    this.studentSubs ? this.studentSubs.unsubscribe() : '';
-    this.studentGetSubs ? this.studentGetSubs.unsubscribe() : '';
-    this.studentDeleteSubs ? this.studentDeleteSubs.unsubscribe() : '';
-    this.studentUpdateSubs ? this.studentUpdateSubs.unsubscribe() : '';
+  onDelete(id: any) : void {
+    this.studentDelSub = this.studentService.deleteStudent(id).subscribe(res => {
+      console.log("DELETE Response: ", res);
+      this.loadStudents();
+      window.location.reload();
+    },
+    err => {
+      console.log("DELETE Error: ", err)
+    });
   }
 
 }
