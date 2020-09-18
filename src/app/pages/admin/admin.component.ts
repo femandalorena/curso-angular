@@ -64,6 +64,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   onEdit(product): void {
     this.idEdit = product.id;
     this.productForm.patchValue(product);
+    
   }
 
   onUpdateProduct(): void {
@@ -95,6 +96,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     }).subscribe(
       res => {
         console.log('RESP: ', res);
+         this.loadProduct();
       },
       err => {
         console.log('ERROR DE SERVIDOR');
