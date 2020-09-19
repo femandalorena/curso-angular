@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, FormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
 import { StudentService } from '../../shared/services/student.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
@@ -9,19 +10,20 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './student.component.html'
 })
 export class StudentComponent implements OnInit {
-	 
+	
 	students = [];
 	primary = [];
 	secondary = [];
 
 	studentForm: FormGroup;
-
+  studentSearchSub: Subscription;
   studentGetSub: Subscription;
   studentDelSubs: Subscription;
 studentUpdateSubs: Subscription;
   idEdit : any;
 
 	@Input() student: any;
+  @Input() request: string;
 	@Output() formForSide = new EventEmitter();
 
 	constructor(private formBuilder: FormBuilder,
@@ -29,6 +31,17 @@ studentUpdateSubs: Subscription;
               private authService: AuthService) {
 		this.loadStudents();
 	}
+
+    search(val: string) {
+    this.request= val;
+    if (this.request != ''){
+this.students = [];
+    this.studentGetSub = this.studentService.getSearched(val).subscribe(res => {
+      Object.entries(res).map((p: any) => this.students.push({id: p[0], ...p[1]}));
+    });}else{
+      this.loadStudents();
+    }
+  }
 
 	ngOnInit(): void {
 		this.studentForm = this.formBuilder.group({
@@ -104,5 +117,9 @@ studentUpdateSubs: Subscription;
       console.log("DELETE Error: ", err)
     });
   }
-
+ ngOnDestroy(): void {
+    this.studentGetSub ? this.studentGetSub.unsubscribe() : '';
+    this.studentDelSubs ? this.studentDelSubs.unsubscribe() : '';
+    this.studentSearchSub ? this.studentSearchSub.unsubscribe() : '';
+  }
 }

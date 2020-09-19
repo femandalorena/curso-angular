@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {StudentRoutingModule} from './student-routing.module';
 import {StudentComponent} from './student.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StudentService} from '../../shared/services/student.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
@@ -26,7 +26,8 @@ import {NamePipe, StudentService} from '../../shared/name.pipe';
     MatSidenavModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   providers: [
     StudentService

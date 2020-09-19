@@ -54,11 +54,11 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       ADD
     </button>
-  </div>
-  <div class="example-sidenav-content">
     <button type="button" mat-button >
       REPORT
     </button>
+  <input type="text" [(ngModel)]="request" #box>
+		<button (click)="search(box.value)">Search</button>
   </div>
 
 
